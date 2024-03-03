@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://blog.ziyii.top</id>
+    <title>ziyii的博客</title>
+    <updated>2024-03-03T11:22:18.457Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://blog.ziyii.top"/>
+    <link rel="self" href="https://blog.ziyii.top/atom.xml"/>
+    <subtitle>温故而知新</subtitle>
+    <logo>https://blog.ziyii.top/images/avatar.png</logo>
+    <icon>https://blog.ziyii.top/favicon.ico</icon>
+    <rights>All rights reserved 2024, ziyii的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[python从入门到入土]]></title>
+        <id>https://blog.ziyii.top/mR4eE5lGl/</id>
+        <link href="https://blog.ziyii.top/mR4eE5lGl/">
+        </link>
+        <updated>2024-03-03T09:52:16.000Z</updated>
+        <summary type="html"><![CDATA[<p><strong>注: python 和 vscode 安装都是免费的，如果你遇到收费的请立刻删除。</strong></p>
+]]></summary>
+        <content type="html"><![CDATA[<p><strong>注: python 和 vscode 安装都是免费的，如果你遇到收费的请立刻删除。</strong></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[windows下的gcc安装]]></title>
+        <id>https://blog.ziyii.top/FpZzVvfs3/</id>
+        <link href="https://blog.ziyii.top/FpZzVvfs3/">
+        </link>
+        <updated>2023-12-22T14:31:18.000Z</updated>
+        <summary type="html"><![CDATA[<p>基于网上教程自留用。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>基于网上教程自留用。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[python sqlite3 库的简单封装]]></title>
+        <id>https://blog.ziyii.top/CGuIjtpR2/</id>
+        <link href="https://blog.ziyii.top/CGuIjtpR2/">
+        </link>
+        <updated>2023-09-20T15:33:47.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="序">序</h2>
+<p>sqlite3是一个文件型数据库，使用起来非常的便捷。<br>
+但是因为我sql语句不熟悉，所以我进行了二次封装。</p>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="序">序</h2>
+<p>sqlite3是一个文件型数据库，使用起来非常的便捷。<br>
+但是因为我sql语句不熟悉，所以我进行了二次封装。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[gridea 远程仓库设置]]></title>
+        <id>https://blog.ziyii.top/GN_5qgLbA/</id>
+        <link href="https://blog.ziyii.top/GN_5qgLbA/">
+        </link>
+        <updated>2023-09-11T14:25:48.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="序">序</h2>
+<p>简单总结一下我遇到的问题和解决方法。<br>
+方便我自己下次重新配置。</p>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="序">序</h2>
+<p>简单总结一下我遇到的问题和解决方法。<br>
+方便我自己下次重新配置。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[git 上传，拉取，分支切换，版本控制]]></title>
+        <id>https://blog.ziyii.top/uDJmGjebx/</id>
+        <link href="https://blog.ziyii.top/uDJmGjebx/">
+        </link>
+        <updated>2023-09-09T11:00:15.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="序">序</h2>
+<p>我的个人笔记，方便我的下次使用。<br>
+可能会有错漏地方，望多多包涵。</p>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="序">序</h2>
+<p>我的个人笔记，方便我的下次使用。<br>
+可能会有错漏地方，望多多包涵。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Python3.10 使用中文转16进制的零宽加解密]]></title>
+        <id>https://blog.ziyii.top/dslwpogqX/</id>
+        <link href="https://blog.ziyii.top/dslwpogqX/">
+        </link>
+        <updated>2023-09-07T14:38:17.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="序">序</h2>
+<p>网上冲浪发现的好玩的加密方式，但是有的使用的是摩斯密码之类的。（中文会翻好几倍长度）<br>
+然后我发现零宽字符够16种，所以尝试使用16进制来加密。（中文一般长度 * 2就够了）</p>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="序">序</h2>
+<p>网上冲浪发现的好玩的加密方式，但是有的使用的是摩斯密码之类的。（中文会翻好几倍长度）<br>
+然后我发现零宽字符够16种，所以尝试使用16进制来加密。（中文一般长度 * 2就够了）</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Hello Gridea]]></title>
+        <id>https://blog.ziyii.top/hello-gridea/</id>
+        <link href="https://blog.ziyii.top/hello-gridea/">
+        </link>
+        <updated>2018-12-11T16:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
+✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
+✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+]]></content>
+    </entry>
+</feed>

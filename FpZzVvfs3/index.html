@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>windows下的gcc安装 | ziyii的博客</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://blog.ziyii.top/favicon.ico?v=1709464527935">
+<link rel="stylesheet" href="https://blog.ziyii.top/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="基于网上教程自留用。
+
+推荐版本
+适用于 x64 Windows 的可移植 C 和 C++ 开发工具包
+运行一些比较基础的linux命令(比如ls，mkdir，touch，vim）。
+MinGW-W64-binaries
+不需要基础指令的。..." />
+    <meta name="keywords" content="gcc,windows" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://blog.ziyii.top">
+        <img src="https://blog.ziyii.top/images/avatar.png?v=1709464527935" class="site-logo">
+        <h1 class="site-title">ziyii的博客</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/ziyii01" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Gridea | <a class="rss" href="https://blog.ziyii.top/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">windows下的gcc安装</h2>
+            <div class="post-date">2023-12-22</div>
+            
+            <div class="post-content" v-pre>
+              <p>基于网上教程自留用。</p>
+<!-- more -->
+<h2 id="推荐版本">推荐版本</h2>
+<p><a href="https://github.com/skeeto/w64devkit">适用于 x64 Windows 的可移植 C 和 C++ 开发工具包</a><br>
+运行一些比较基础的linux命令(比如ls，mkdir，touch，vim）。</p>
+<p><a href="https://github.com/niXman/mingw-builds-binaries">MinGW-W64-binaries</a><br>
+不需要基础指令的。</p>
+<h2 id="mingw的安装包选择">mingw的安装包选择</h2>
+<figure data-type="image" tabindex="1"><img src="https://blog.ziyii.top/post-images/1703255838764.png" alt="github 发布的版本" loading="lazy"></figure>
+<h3 id="i686和x86_64的区别">i686和x86_64的区别</h3>
+<p>i686和x86_64分别是32位和64位的CPU指令集。i686是x86家族线的一部分，而x86_64也被称为amd64。在处理大型数据库等需要在同一进程中使用大量内存的工作负载时，64位版本将更好地扩展内存。</p>
+<h3 id="posix和win32的区别">posix和win32的区别</h3>
+<p>POSIX是一种UNIX API标准，而Win32是Windows的API标准。这两者之间有一些区别，例如在mingw-w64中，使用posix线程将启用C++11/C11多线程功能，并使libgcc依赖于libwinpthreads。而使用win32线程则不会启用C++11多线程功能。</p>
+<h3 id="dwarf和seh的区别">dwarf和seh的区别</h3>
+<p>DWARF（DW2，dwarf-2）和SEH（零开销exception）是两种不同的异常处理模型。DWARF仅适用于32位系统，没有永久的运行时开销，但需要整个调用堆栈被启用。SEH将可用于64位GCC 4.8。</p>
+<h3 id="msvcrt和ucrt的区别">msvcrt和ucrt的区别</h3>
+<p>MSVCRT（Microsoft Visual C++ Runtime）和UCRT（Universal C Runtime）是Microsoft Windows上的两种C标准库变体。MSVCRT在所有Microsoft Windows版本中都默认可用，但由于向后兼容性问题，它已经过时，不兼容C99并且缺少一些功能。而UCRT是一个较新的版本，也是Microsoft Visual Studio默认使用的版本。它应该像使用MSVC编译的代码一样工作和表现。</p>
+<h2 id="参考">参考</h2>
+<p><a href="https://zhuanlan.zhihu.com/p/565370467">windows下安装gcc12（mingw-w64）</a><br>
+<a href="https://blog.csdn.net/zhangjiuding/article/details/129556458">【软件教程】MingW-W64-builds不同版本之间的区别</a></p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://blog.ziyii.top/YzpFT7T_Y/" class="tag">
+                    gcc
+                  </a>
+                
+                  <a href="https://blog.ziyii.top/ejT5TG1xS1/" class="tag">
+                    windows
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://blog.ziyii.top/CGuIjtpR2/">
+                  <h3 class="post-title">
+                    python sqlite3 库的简单封装
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+
+  </body>
+</html>

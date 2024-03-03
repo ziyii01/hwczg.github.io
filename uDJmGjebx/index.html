@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>git 上传，拉取，分支切换，版本控制 | ziyii的博客</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://blog.ziyii.top/favicon.ico?v=1709464527935">
+<link rel="stylesheet" href="https://blog.ziyii.top/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="序
+我的个人笔记，方便我的下次使用。
+可能会有错漏地方，望多多包涵。
+
+安装
+自己百度去。
+本地阶段
+git 录入个人信息
+git 的每次提交版本需要提交人的昵称，邮箱信息。
+所以我们需要提前设置一下，否则后续提交版本的时候会报错。
+录入个..." />
+    <meta name="keywords" content="git" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://blog.ziyii.top">
+        <img src="https://blog.ziyii.top/images/avatar.png?v=1709464527935" class="site-logo">
+        <h1 class="site-title">ziyii的博客</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/ziyii01" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Gridea | <a class="rss" href="https://blog.ziyii.top/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">git 上传，拉取，分支切换，版本控制</h2>
+            <div class="post-date">2023-09-09</div>
+            
+            <div class="post-content" v-pre>
+              <h2 id="序">序</h2>
+<p>我的个人笔记，方便我的下次使用。<br>
+可能会有错漏地方，望多多包涵。</p>
+<!-- more -->
+<h2 id="安装">安装</h2>
+<p>自己百度去。</p>
+<h2 id="本地阶段">本地阶段</h2>
+<h3 id="git-录入个人信息">git 录入个人信息</h3>
+<p>git 的每次提交版本需要提交人的昵称，邮箱信息。<br>
+所以我们需要提前设置一下，否则后续提交版本的时候会报错。</p>
+<h4 id="录入个人昵称">录入个人昵称</h4>
+<p>使用 <code>git config --global user.name &quot;ziyii&quot;</code> 录入昵称。<br>
+使用 <code>git config --global user.email &quot;temp@ziyii.top&quot;</code> 录入邮箱。</p>
+<h3 id="初始化">初始化</h3>
+<p>使用 <code>git init</code> 进行项目的初始化。</p>
+<h3 id="查看项目内文件状态">查看项目内文件状态</h3>
+<p>使用 <code>git status</code> 命令来查看<br>
+注：新增的文件和修改过后的文件都是红色。</p>
+<h3 id="令git管理某个某些文件">令git管理某个/某些文件</h3>
+<p>使用 <code>git add 文件名</code> 来添加某一个文件。<br>
+使用 <code>git add .</code> 来添加项目内的全部文件。<br>
+（<s>自己的小项目一般来说直接</s> <code>git add .</code> <s>就行了。</s>）</p>
+<h3 id="创建版本">创建版本</h3>
+<p>使用 <code>git commit -m &quot;描述信息&quot;</code> 创建版本。<br>
+描述信息是这个版本的描述信息，后续可以在 <code>git log</code> 中查看到描述信息。</p>
+<h3 id="查看历史版本">查看历史版本</h3>
+<p>使用 <code>git log</code> 查看。<br>
+（这时候就能看到是<strong>谁提交的</strong>，<strong>版本的描述信息</strong>等）</p>
+<h3 id="回滚">回滚</h3>
+<p>版本控制的目的之一就是可控的回滚版本。<br>
+使用 <code>git reset --hard 版本号</code> 来回滚版本。<br>
+<strong>注：</strong></p>
+<ul>
+<li>往前回滚用 <code>git log</code> 查看版本号。</li>
+<li>往后回滚用 <code>git reflog</code> 查看版本号。</li>
+</ul>
+<pre><code class="language-git">ziyii@LAPTOP-CSVJ8G5V MINGW64 /c/ziyii/git (main)
+$ git log
+commit 9a9275361ee7d415998f2127e83e5145cabb7dbe (HEAD -&gt; main)
+Author: ziyii &lt;temp@ziyii.top&gt;
+Date:   Sat Sep 9 20:00:17 2023 +0800
+
+    002版本
+
+commit aaee061a1cadd40c5524b0ebf839db4da0822287
+Author: ziyii &lt;temp@ziyii.top&gt;
+Date:   Sat Sep 9 19:52:38 2023 +0800
+
+    描述信息
+</code></pre>
+<pre><code class="language-git">ziyii@LAPTOP-CSVJ8G5V MINGW64 /c/ziyii/git (main)
+$ git reflog
+9a92753 (HEAD -&gt; main) HEAD@{0}: commit: 002版本
+aaee061 HEAD@{1}: commit (initial): 描述信息
+</code></pre>
+<pre><code class="language-git">ziyii@LAPTOP-CSVJ8G5V MINGW64 /c/ziyii/git (main)
+$ git reset --hard aaee061a1cadd40c5524b0ebf839db4da0822287
+HEAD is now at aaee061 描述信息
+</code></pre>
+<pre><code class="language-git">ziyii@LAPTOP-CSVJ8G5V MINGW64 /c/ziyii/git (main)
+$ git log
+commit aaee061a1cadd40c5524b0ebf839db4da0822287 (HEAD -&gt; main)
+Author: ziyii &lt;temp@ziyii.top&gt;
+Date:   Sat Sep 9 19:52:38 2023 +0800
+
+    描述信息
+</code></pre>
+<pre><code class="language-git">ziyii@LAPTOP-CSVJ8G5V MINGW64 /c/ziyii/git (main)
+$ git reflog
+aaee061 (HEAD -&gt; main) HEAD@{0}: reset: moving to aaee061a1cadd40c5524b0ebf839db4da0822287
+9a92753 HEAD@{1}: commit: 002版本
+aaee061 (HEAD -&gt; main) HEAD@{2}: commit (initial): 描述信息
+</code></pre>
+<pre><code class="language-git">ziyii@LAPTOP-CSVJ8G5V MINGW64 /c/ziyii/git (main)
+$ git reset --hard 9a92753
+HEAD is now at 9a92753 002版本
+</code></pre>
+<pre><code class="language-git">ziyii@LAPTOP-CSVJ8G5V MINGW64 /c/ziyii/git (main)
+$ git log
+commit 9a9275361ee7d415998f2127e83e5145cabb7dbe (HEAD -&gt; main)
+Author: ziyii &lt;temp@ziyii.top&gt;
+Date:   Sat Sep 9 20:00:17 2023 +0800
+
+    002版本
+
+commit aaee061a1cadd40c5524b0ebf839db4da0822287
+Author: ziyii &lt;temp@ziyii.top&gt;
+Date:   Sat Sep 9 19:52:38 2023 +0800
+
+    描述信息
+
+</code></pre>
+<h3 id="分支">分支</h3>
+<p>我目前对分支不甚了解，这解释可能有错漏的地方，如有发现，请联系我。</p>
+<h4 id="查看分支">查看分支</h4>
+<p><code>git branch</code></p>
+<h4 id="创建分支">创建分支</h4>
+<p><code>git branch 分支名称</code><br>
+从当前版本去创建一个分支，所以进度就是当前的版本。</p>
+<h4 id="重命名分支">重命名分支</h4>
+<p>因为<strong>git</strong>默认分支是 <code>master</code> ，而 <strong>github</strong> 默认分支是 <code>main</code><br>
+我们可以用 <code>git branch -M main</code> 来重命名本地的 <code>master</code> 分支。<br>
+（-M是强制重命名的意思）</p>
+<h4 id="切换分支">切换分支</h4>
+<p><code>git checkout 分支名称</code><br>
+切换分支，比如从master切换成main。<br>
+在新分支写代码不影响另一个分支。</p>
+<p><code>git merge 要合并的分支</code><br>
+比如在 <code>main</code> 要合并 <code>master</code> 分支，需要先切换到 <code>main</code> 分支，然后使用 <code>git merge master</code> 。<br>
+就是 <strong>切换分支再合并</strong> ！<br>
+（分支合并可能会发生文件冲突，需要自己手动解决冲突）</p>
+<h4 id="删除分支">删除分支</h4>
+<p><code>git branch -d 分支名称</code></p>
+<h2 id="远程阶段">远程阶段</h2>
+<h3 id="添加链接">添加链接</h3>
+<p><code>git remote add [别名] [远程地址]</code></p>
+<h3 id="查看连接">查看连接</h3>
+<p><code>git remote -v [地址别名]</code></p>
+<h3 id="推送文件">推送文件</h3>
+<p><code>git push [别名] master</code><br>
+以下是我推时候遇到的问题，出自已经有一个旧云端仓库了，但是旧仓库文件都删除了，新仓库文件在本地推不上去。<br>
+（其实是远端有一个 <code>.git</code> 而本地也有一个 <code>.git</code> 两个冲突了）</p>
+<h3 id="拉取文件">拉取文件</h3>
+<p><code>git clone [链接]</code></p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://blog.ziyii.top/gJcIDHBSt/" class="tag">
+                    git
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://blog.ziyii.top/dslwpogqX/">
+                  <h3 class="post-title">
+                    Python3.10 使用中文转16进制的零宽加解密
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+
+  </body>
+</html>

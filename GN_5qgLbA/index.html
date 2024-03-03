@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>gridea 远程仓库设置 | ziyii的博客</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://blog.ziyii.top/favicon.ico?v=1709464527935">
+<link rel="stylesheet" href="https://blog.ziyii.top/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="序
+简单总结一下我遇到的问题和解决方法。
+方便我自己下次重新配置。
+
+设置
+平台
+我自己选择 Github Pages ，各位可以自己选择其他的。
+配置因该大同小异。
+域名
+默认勾选https，当然你也可以选择用http（我没用过http，..." />
+    <meta name="keywords" content="Gridea" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://blog.ziyii.top">
+        <img src="https://blog.ziyii.top/images/avatar.png?v=1709464527935" class="site-logo">
+        <h1 class="site-title">ziyii的博客</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/ziyii01" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Gridea | <a class="rss" href="https://blog.ziyii.top/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">gridea 远程仓库设置</h2>
+            <div class="post-date">2023-09-11</div>
+            
+            <div class="post-content" v-pre>
+              <h2 id="序">序</h2>
+<p>简单总结一下我遇到的问题和解决方法。<br>
+方便我自己下次重新配置。</p>
+<!-- more -->
+<h2 id="设置">设置</h2>
+<h3 id="平台">平台</h3>
+<p>我自己选择 <code>Github Pages</code> ，各位可以自己选择其他的。<br>
+配置因该大同小异。</p>
+<h3 id="域名">域名</h3>
+<p>默认勾选https，当然你也可以选择用http（我没用过http，不知效果。</p>
+<p>这里是你 <code>Github Pages</code> 访问的地址。<br>
+默认是 <code>Github名字.github.io</code> 。（就是和仓库名称一致）<br>
+否则就是你自己设置的域名。<br>
+注：<strong>如果你使用了自己的域名，这里一定要设置成自己的域名（就是访问出来地址栏显示的域名）</strong><br>
+否则会css之类的资源访问出错！</p>
+<h3 id="仓库名称">仓库名称</h3>
+<p>就是你的仓库名称，一般是你 <code>Github名字.github.io</code> 。</p>
+<h3 id="分支">分支</h3>
+<p><code>Github</code> 现在默认是 <code>main</code> 分支。</p>
+<h3 id="仓库用户名">仓库用户名</h3>
+<p>就是你的用户名</p>
+<h3 id="邮箱">邮箱</h3>
+<p>因该是可以随便设置的，我猜是用来 <code>git</code> 推上去时候需要的参数。</p>
+<h3 id="令牌">令牌</h3>
+<p>令牌创建地址：<a href="https://github.com/settings/tokens">https://github.com/settings/tokens</a><br>
+注：</p>
+<ul>
+<li>你可以只勾选 <strong><code>repo</code></strong> 来提高安全性。</li>
+<li>你也可以勾选永久不过期。<br>
+<img src="https://blog.ziyii.top/post-images/1694443150493.png" alt="永久不过期选项" loading="lazy"></li>
+</ul>
+<h3 id="cname">CNAME</h3>
+<p>如果你设置了自己的域名，这里填你设置的域名，否则不填就行。</p>
+<h3 id="http代理">HTTP代理</h3>
+<p>不懂的话，默认就行。</p>
+<h2 id="结束">结束</h2>
+<figure data-type="image" tabindex="1"><img src="https://blog.ziyii.top/post-images/1694442485983.png" alt="配置好的图" loading="lazy"></figure>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://blog.ziyii.top/-iDcQgYQg/" class="tag">
+                    Gridea
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://blog.ziyii.top/uDJmGjebx/">
+                  <h3 class="post-title">
+                    git 上传，拉取，分支切换，版本控制
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+
+  </body>
+</html>

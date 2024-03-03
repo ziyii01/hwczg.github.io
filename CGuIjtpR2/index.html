@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>python sqlite3 库的简单封装 | ziyii的博客</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://blog.ziyii.top/favicon.ico?v=1709464527935">
+<link rel="stylesheet" href="https://blog.ziyii.top/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="序
+sqlite3是一个文件型数据库，使用起来非常的便捷。
+但是因为我sql语句不熟悉，所以我进行了二次封装。
+
+导入
+#!/usr/bin/env python
+# -*- encoding: utf-8 -*-
+'''
+# 文件 : S..." />
+    <meta name="keywords" content="数据库,python" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://blog.ziyii.top">
+        <img src="https://blog.ziyii.top/images/avatar.png?v=1709464527935" class="site-logo">
+        <h1 class="site-title">ziyii的博客</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/ziyii01" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Gridea | <a class="rss" href="https://blog.ziyii.top/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">python sqlite3 库的简单封装</h2>
+            <div class="post-date">2023-09-20</div>
+            
+            <div class="post-content" v-pre>
+              <h2 id="序">序</h2>
+<p>sqlite3是一个文件型数据库，使用起来非常的便捷。<br>
+但是因为我sql语句不熟悉，所以我进行了二次封装。</p>
+<!-- more -->
+<h2 id="导入">导入</h2>
+<pre><code class="language-python">#!/usr/bin/env python
+# -*- encoding: utf-8 -*-
+'''
+# 文件 : SQLite3封装.py
+# 时间 : 2023/09/20 23:33:47
+# 作者 : ziyii
+# 版本 : 1.0
+# 邮箱 : temp@ziyii.top
+# 协议 : &lt;GNU General Public License v3.0&gt;
+# 简介 : SQLite3库的简单封装。
+'''
+
+# 以下是导入库
+
+import sqlite3, loguru
+</code></pre>
+<p>sqlite3是py自带的库。<br>
+loguru好像是第三方库，是一个简便实用的日志库。</p>
+<h2 id="基础框架">基础框架</h2>
+<pre><code class="language-python">def 基础框架(文件路径: str, sql语句: str) -&gt; list | None:
+    &quot;&quot;&quot;基础框架，用于执行SQl语句，如果你想直接使用SQL语句可以直接调用这个函数。\n
+    读取数据库报错返回 None
+
+    参数：
+        文件路径（str）：数据库文件路径，默认是项目的起始目录，使用相对路径时请注意。\n\n
+        sql语句（str）：需要执行的sql语句。\n
+
+    返回值：
+        list：返回的是数据库读取的列表，有数据的列表里是数据元组，没有数据的是空列表`[]`。\n
+        none：报错返回的内容。
+    &quot;&quot;&quot;
+    数据库 = sqlite3.connect(文件路径)
+    数据库_游标 = 数据库.cursor()
+    try:
+        数据库_游标.execute(sql语句)
+        返回值 = 数据库_游标.fetchall()
+    except Exception as e:
+        loguru.logger.error(f&quot;数据库错误: {e}&quot;)
+        数据库.rollback()
+        return None
+    数据库.commit()
+    数据库.close()
+    return 返回值
+</code></pre>
+<h2 id="创建表">创建表</h2>
+<pre><code class="language-python">def 创建表(文件路径: str, 表名: str, 主键: str, 键: list | None = None) -&gt; list | None:
+    &quot;&quot;&quot;
+
+    参数：
+        文件路径（str）：数据库文件路径，默认是项目的起始目录，使用相对路径时请注意。\n
+        表名（str）：数据库文件中的数据表的名字。\n
+        主键（str）：数据库中的主键，主键属性（唯一，非空）。\n
+        键（list）：其他的键，如果只有一个键也需要传入列表形式。
+
+    返回值：
+        list：返回的是空列表 `[]`\n
+        none：报错返回的内容。
+    &quot;&quot;&quot;
+    键_i = ''
+    if 键 is not None:
+        for i in 键:
+            键_i += f',`{i}`'
+    sql语句 = rf'''CREATE TABLE `{表名}` (`{主键}` PRIMARY KEY UNIQUE NOT NULL {键_i});'''
+    return 基础框架(文件路径, sql语句)
+</code></pre>
+<h2 id="限制">限制</h2>
+<pre><code class="language-python">def 限制(条件一: str, 条件二: str, 条件: str = '等于') -&gt; str | None:
+    &quot;&quot;&quot;
+
+    参数：
+        条件一（str）：前一个条件。\n
+        条件二（str）：后一个条件。\n
+        条件（str）：需要做的判断。\n
+            判断条件支持：'等于','大于','大于等于','小于','小于等于','不等于','开头包含','开头不包含','在','不在']
+
+    返回值：
+        str：返回的是限制的SQl语句，无WHERE，只是WHERE后的限制语句。\n
+        none：报错返回的内容。
+    &quot;&quot;&quot;
+    条件对应字典: dict = {
+        '等于': '=',
+        '大于': '&gt;',
+        '大于等于': '&gt;=',
+        '小于': '&lt;',
+        '小于等于': '&lt;=',
+        '不等于': 'IS NOT',
+        '开头包含': 'LIKE',
+        '开头不包含': 'NOT LIKE',
+        '在': 'IN',
+        '不在': 'NOT IN'
+    }
+    if 条件 not in 条件对应字典.keys():
+        loguru.logger.error(f&quot;条件错误: {条件}&quot;)
+        return
+    else:
+        return rf'&quot;{条件一}&quot;{条件对应字典[条件]}&quot;{条件二}&quot;'
+</code></pre>
+<h2 id="读取">读取</h2>
+<pre><code class="language-python">def 读取(文件路径: str,
+       表名: str,
+       键: list,
+       限制: str | None = None,
+       默认值=None) -&gt; list | None:
+    &quot;&quot;&quot;
+    参数：
+        文件路径（str）：数据库文件路径，默认是项目的起始目录，使用相对路径时请注意。\n
+        表名（str）：数据库文件中的数据表的名字。\n
+        键（list）：需要读取的键，如果只有一个键也需要传入列表形式。\n
+        限制（str）：对取值范围进行限制，WHERE自动添加了，无需再添加一遍。\n
+        默认值：如果读取内容为空的时候返回的结果。
+
+    返回值：
+        list：返回的是数据库读取的列表，有数据的列表里是数据元组，没有数据的是空列表`[]`。\n
+        none：报错返回的内容。
+    &quot;&quot;&quot;
+    键_i = ''
+    限制_i = ''
+    for i in 键:
+        键_i += f'{i}, '
+    if 限制 != None:
+        限制_i += f'WHERE {限制}'
+    sql语句 = rf'''SELECT {键_i[:-2]} FROM {表名} {限制_i};'''
+    基础框架_返回数据 = 基础框架(文件路径, sql语句)
+    if 基础框架_返回数据 == None:
+        return 默认值
+    return 基础框架_返回数据
+</code></pre>
+<h2 id="写入">写入</h2>
+<pre><code class="language-python">def 写入(文件路径: str, 表名: str, 键: list, 值: list) -&gt; list | None:
+    &quot;&quot;&quot;
+    参数：
+        文件路径（str）：数据库文件路径，默认是项目的起始目录，使用相对路径时请注意。\n
+        表名（str）：数据库文件中的数据表的名字。\n
+        键（list）：需要写入的键，如果只有一个键也需要传入列表形式。\n
+            与值的列表顺序是对应关系。\n
+        值（list）：需要写入的键，如果只有一个键也需要传入列表形式。\n
+            与键的列表顺序是对应关系。
+
+    返回值：
+        list：返回的是空列表 `[]`\n
+        none：报错返回的内容。
+    &quot;&quot;&quot;
+    键_i = ''
+    值_i = ''
+    键值对_i = ''
+    if 读取(文件路径, 表名, 键, 限制(键[0], 值[0], '等于')) != []:
+        for i in range(len(键)):
+            键值对_i += f'{键[i]} = &quot;{值[i]}&quot;, '
+        sql语句 = rf'''UPDATE {表名} SET {键值对_i[:-2]} WHERE {限制(键[0], 值[0], '等于')};'''
+    else:
+        for i in 键:
+            键_i += f'{i}, '
+        for i in 值:
+            值_i += f'&quot;{i}&quot;, '
+        sql语句 = rf'''INSERT INTO {表名} ({键_i[:-2]}) VALUES ({值_i[:-2]});'''
+    return 基础框架(文件路径, sql语句)
+</code></pre>
+<h2 id="示例">示例</h2>
+<pre><code class="language-python">import SQLite3封装
+
+SQLite3封装.创建表('./db.db', 表名='ziyii', 主键='QQ号', 键=['测试1', '测试2'])
+SQLite3封装.写入('./db.db', 表名='ziyii', 键=['QQ号', '测试1'], 值=['1234', 1569])
+SQLite3封装.读取('./db.db', 表名='ziyii', 键=['QQ号', '测试1'], 限制=限制('QQ号', '1234', '等于'))
+</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://blog.ziyii.top/6EXNFJusQ/" class="tag">
+                    数据库
+                  </a>
+                
+                  <a href="https://blog.ziyii.top/Kkx8JzgeA/" class="tag">
+                    python
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://blog.ziyii.top/GN_5qgLbA/">
+                  <h3 class="post-title">
+                    gridea 远程仓库设置
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+
+  </body>
+</html>
