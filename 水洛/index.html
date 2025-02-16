@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>水洛纪念页</title>
+    <style>
+      /* CSS样式 */
+      body {
+        font-family: "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+        background-color: #fff5f5;
+        margin: 0;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(255, 182, 193, 0.2);
+        position: relative;
+      }
+
+      .avatar {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        border: 5px solid #ffb6c1;
+        display: block;
+        margin: 0 auto 20px;
+        object-fit: cover;
+        transition: transform 0.3s;
+      }
+
+      .avatar:hover {
+        transform: scale(1.05);
+      }
+
+      h1 {
+        color: #ff69b4;
+        text-align: center;
+        font-size: 2.5em;
+        margin: 10px 0;
+        text-shadow: 2px 2px 2px rgba(255, 105, 180, 0.2);
+      }
+
+      .dates {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin: 20px 0;
+      }
+
+      .date-item {
+        background: #fff0f5;
+        padding: 15px 25px;
+        border-radius: 10px;
+        text-align: center;
+        border: 2px dashed #ffb6c1;
+      }
+
+      .bio {
+        background: #f8f8ff;
+        padding: 20px;
+        border-radius: 10px;
+        margin: 20px 0;
+        border-left: 5px solid #ff69b4;
+      }
+
+      .decorative-heart {
+        position: absolute;
+        color: #ffb6c1;
+        font-size: 24px;
+        opacity: 0.6;
+      }
+
+      /* 爱心动画 */
+      @keyframes float {
+        0% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- 装饰爱心 -->
+      <div class="decorative-heart" style="top: 10px; left: 20px">❤</div>
+      <div class="decorative-heart" style="top: 40px; right: 30px">❤</div>
+
+      <img src="avatar.jpg" alt="头像" class="avatar" id="avatar" />
+      <h1 id="name">水洛</h1>
+
+      <div class="dates">
+        <div class="date-item">
+          <h3>入群日期</h3>
+          <p id="join-date">2025-01-18</p>
+        </div>
+        <div class="date-item">
+          <h3>离群日期</h3>
+          <p id="leave-date">2025-02-16</p>
+        </div>
+      </div>
+
+      <div class="bio">
+        <h2>关于TA</h2>
+        <p id="bio-content">一个温暖可爱的小天使，总是用表情包治愈大家。</p>
+      </div>
+    </div>
+
+    <script>
+      // 简单的交互效果
+      document.addEventListener("DOMContentLoaded", function () {
+        // 头像点击动画
+        const avatar = document.getElementById("avatar");
+        avatar.addEventListener("click", function () {
+          this.style.transform = "scale(1.1) rotate(5deg)";
+          setTimeout(() => {
+            this.style.transform = "";
+          }, 500);
+        });
+
+        // 随机生成装饰爱心
+        const container = document.querySelector(".container");
+        for (let i = 0; i < 6; i++) {
+          const heart = document.createElement("div");
+          heart.className = "decorative-heart";
+          heart.style.left = Math.random() * 90 + "%";
+          heart.style.top = Math.random() * 90 + "%";
+          heart.style.animation = `float ${3 + Math.random() * 2}s infinite`;
+          heart.innerHTML = "❤";
+          container.appendChild(heart);
+        }
+      });
+    </script>
+  </body>
+</html>
