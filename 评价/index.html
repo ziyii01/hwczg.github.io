@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        max-width: 540px;
+        background-color: #6cf;
+      }
+
+      #checkboxs {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: left;
+        align-items: center;
+        font-size: 24px;
+      }
+
+      #checkboxs label {
+        text-decoration: line-through;
+        color: #888; /* 更改未选中项的文字颜色，以便区分 */
+      }
+
+      /* 当复选框被选中时，取消其父级label的删除线并恢复文字颜色 */
+      #checkboxs label:has(input[type="checkbox"]:checked) {
+        text-decoration: none;
+        color: initial;
+      }
+
+      .input-container {
+        margin-top: 20px; /* 与上面的元素保持一些间距 */
+      }
+
+      .input-container input {
+        width: 100%; /* 使输入框宽度自适应容器 */
+        padding: 10px; /* 添加内边距 */
+        border: 1px solid #ccc; /* 添加边框 */
+        border-radius: 4px; /* 添加圆角 */
+        box-sizing: border-box; /* 使内边距和边框包含在宽度内 */
+        font-size: 16px;
+      }
+
+      .input-container input:focus {
+        outline: none; /* 去除焦点时的外轮廓 */
+        border-color: #4a90e2; /* 改变边框颜色 */
+        box-shadow: 0 0 8px rgba(74, 144, 226, 0.5); /* 添加阴影 */
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <div class="input-container">
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="请输入你要评价的人的名字"
+        />
+      </div>
+      <div id="checkboxs">
+        <div>
+          <label>温柔<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label>乐观<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label>直球<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label>单纯<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label>幽默<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label>社牛<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label>热情<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label>正经<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label>敏感<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label>黏人<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label>傲娇<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label>病娇<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label>中二<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label>变态<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label>腹黑<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label>善良<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label>可爱<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label>冷静<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label>乌鸡<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label>话痨<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label>社恐<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label>冷漠<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label>双面<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label>强攻<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label>弱受<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label>霸道<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label>佛系<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label>阴暗<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label>老实<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label>感性<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label>内向<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label>外向<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label>闲人<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label>忙人<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label>群宠<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label>天然<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label>呆傻<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label>白甜<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label
+            >抽象派<input type="checkbox" name="checkbox" value=""
+          /></label>
+        </div>
+        <div>
+          <label
+            >技术强<input type="checkbox" name="checkbox" value=""
+          /></label>
+        </div>
+        <div>
+          <label
+            >小南梁<input type="checkbox" name="checkbox" value=""
+          /></label>
+        </div>
+        <div>
+          <label
+            >小太阳<input type="checkbox" name="checkbox" value=""
+          /></label>
+        </div>
+        <div>
+          <label
+            >小恶魔<input type="checkbox" name="checkbox" value=""
+          /></label>
+        </div>
+        <div>
+          <label
+            >吉祥物<input type="checkbox" name="checkbox" value=""
+          /></label>
+        </div>
+        <div>
+          <label
+            >爱发电<input type="checkbox" name="checkbox" value=""
+          /></label>
+        </div>
+        <div>
+          <label
+            >渴望保护<input type="checkbox" name="checkbox" value=""
+          /></label>
+        </div>
+        <div>
+          <label
+            >猫猫一只<input type="checkbox" name="checkbox" value=""
+          /></label>
+        </div>
+        <div>
+          <label
+            >外冷内热<input type="checkbox" name="checkbox" value=""
+          /></label>
+        </div>
+        <div>
+          <label
+            >外热内冷<input type="checkbox" name="checkbox" value=""
+          /></label>
+        </div>
+        <div>
+          <label>杂鱼<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label
+            >交际能力强<input type="checkbox" name="checkbox" value=""
+          /></label>
+        </div>
+        <div>
+          <label
+            >人际关系广<input type="checkbox" name="checkbox" value=""
+          /></label>
+        </div>
+        <div>
+          <label
+            >生活很节俭<input type="checkbox" name="checkbox" value=""
+          /></label>
+        </div>
+        <div>
+          <label
+            >生活很奢侈<input type="checkbox" name="checkbox" value=""
+          /></label>
+        </div>
+        <div>
+          <label>长睡<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label>短眠<input type="checkbox" name="checkbox" value="" /></label>
+        </div>
+        <div>
+          <label
+            >爱说双关<input type="checkbox" name="checkbox" value=""
+          /></label>
+        </div>
+        <div>
+          <label
+            >爱开玩笑<input type="checkbox" name="checkbox" value=""
+          /></label>
+        </div>
+        <div>
+          <label
+            >文笔好<input type="checkbox" name="checkbox" value=""
+          /></label>
+        </div>
+        <div>
+          <label
+            >有创意<input type="checkbox" name="checkbox" value=""
+          /></label>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
