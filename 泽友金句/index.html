@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>泽友宇宙</title>
+    <style>
+      body {
+        background: #000;
+        margin: 0;
+        overflow: hidden;
+        font-family: "微软雅黑", sans-serif;
+      }
+
+      .container {
+        position: relative;
+        height: 100vh;
+        background: repeating-linear-gradient(
+          45deg,
+          #ff00ff20,
+          #ff00ff20 10px,
+          #00ffff20 10px,
+          #00ffff20 20px
+        );
+      }
+
+      .title {
+        text-align: center;
+        font-size: 4em;
+        color: #00ffff;
+        text-shadow: 0 0 10px #00ffff;
+        animation: title 1s infinite alternate;
+      }
+
+      .content {
+        position: absolute;
+        left: 50%;
+        top: 20%;
+        transform: translateX(-50%);
+        font-size: 2em;
+        text-align: center;
+      }
+
+      .sentence {
+        margin: 20px;
+        color: #ff00ff;
+        text-shadow: 0 0 8px #ff00ff;
+        animation: float 3s infinite ease-in-out;
+        cursor: pointer;
+      }
+
+      .bullet-chat {
+        position: absolute;
+        color: #fff;
+        font-size: 1.2em;
+        text-shadow: 0 0 5px #fff;
+        white-space: nowrap;
+      }
+
+      @keyframes title {
+        from {
+          transform: scale(1);
+        }
+        to {
+          transform: scale(1.1);
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      @keyframes rotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      .audio-panel {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 999;
+        background: #000;
+        padding: 10px;
+        border: 2px solid #00ffff;
+        box-shadow: 0 0 15px #00ffff;
+      }
+
+      #audioVisualizer {
+        width: 200px;
+        height: 50px;
+        margin: 10px 0;
+        position: relative;
+      }
+
+      .audio-bar {
+        position: absolute;
+        bottom: 0;
+        width: 4px;
+        background: #ff00ff;
+        animation: pulse 0.5s infinite alternate;
+      }
+
+      @keyframes pulse {
+        from {
+          height: 10%;
+        }
+        to {
+          height: 90%;
+        }
+      }
+
+      #playButton {
+        background: #ff00ff;
+        color: #000;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1.2em;
+        cursor: pointer;
+        transition: 0.3s;
+        text-shadow: 0 0 5px #fff;
+      }
+
+      #playButton:hover {
+        transform: rotate(3deg) scale(1.1);
+        box-shadow: 0 0 20px #00ffff;
+      }
+      .bullet-chat {
+        position: fixed;
+        left: 100%;
+        opacity: 0;
+        color: #fff;
+        font-size: 1.2em;
+        text-shadow: 0 0 5px #fff;
+        white-space: nowrap;
+        pointer-events: none;
+        animation: bulletMove 15s linear forwards;
+      }
+
+      @keyframes bulletMove {
+        0% {
+          left: 100%;
+          opacity: 0;
+        }
+        2% {
+          opacity: 1;
+        }
+        98% {
+          opacity: 1;
+        }
+        100% {
+          left: -30%;
+          opacity: 0;
+        }
+      }
+      .audio-credit {
+        position: fixed;
+        bottom: 0;
+        left: 250px;
+        right: 250px;
+        max-height: 20px;
+        background: #000;
+        padding: 10px;
+        border: 2px solid #00ffff;
+        box-shadow: 0 0 15px #00ffff;
+        color: #00ffff;
+        text-align: center;
+        z-index: 1000;
+        animation: borderGlow 2s infinite alternate;
+      }
+
+      .audio-credit h3 {
+        margin: 0 0 5px 0;
+        font-size: 1.2em;
+        text-shadow: 0 0 8px #00ffff;
+      }
+
+      .audio-credit a {
+        color: #ff00ff;
+        text-decoration: none;
+        transition: 0.3s;
+      }
+
+      .audio-credit a:hover {
+        text-shadow: 0 0 10px #ff00ff;
+        transform: scale(1.1);
+      }
+
+      @keyframes borderGlow {
+        from {
+          box-shadow: 0 0 10px #00ffff;
+        }
+        to {
+          box-shadow: 0 0 20px #00ffff, 0 0 30px #00ffff80;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="title">泽 友 宇 宙 ★ 参 上</h1>
+      <div class="content">
+        <div class="sentence">泽友群的群主是泽友</div>
+        <div class="sentence" style="color: #ffdd00">鱼饼的鱼是鱼饼的鱼</div>
+        <div class="sentence" style="animation-delay: -1s">
+          小狗是小狗，不是大狗
+        </div>
+        <div class="sentence" style="color: #00ff00">樱良是体育生</div>
+        <div class="sentence" style="transform: rotate(5deg)">老登是傻der</div>
+        <div class="sentence" style="font-size: 1.5em">群是用来聊的</div>
+        <div class="sentence" style="animation: rotate 2s infinite linear">
+          B站是用来刷的
+        </div>
+        <div class="sentence" style="color: #ff0000">泽友是用来感恩的</div>
+        <div class="sentence" style="font-size: 2em">泽友的恩情，还不完！</div>
+      </div>
+    </div>
+    <div class="audio-panel">
+      <div id="audioVisualizer">
+        <!-- 通过JavaScript生成音频波纹 -->
+      </div>
+      <button id="playButton">♂ 音 声 起 ♂</button>
+      <audio id="bgm" loop>
+        <!-- 预留音频文件位置 -->
+        <source src="./audio.flac" type="audio/mpeg" />
+        您的浏览器不支持音频播放
+      </audio>
+    </div>
+    <div class="audio-credit">
+      金曲:
+      <a href="https://www.bilibili.com/video/BV1BZFUetEbd/" target="_blank">
+        金色大厅交响乐演奏【将军的小曲】（迫真）
+      </a>
+    </div>
+    <script>
+      // 生成弹幕
+      function createBulletChat() {
+        const texts = [
+          "全体起立！",
+          "一键三连！",
+          "下次丕定",
+          "典中典",
+          "绷不住了",
+          "可狱不可囚",
+          "群主V我50",
+          "未曾设想的道路",
+          "要素过多",
+        ];
+
+        setInterval(() => {
+          const bullet = document.createElement("div");
+          bullet.className = "bullet-chat";
+
+          // 动态设置样式
+          bullet.style.top = `${Math.random() * 90 + 5}%`;
+          bullet.style.animationDuration = `${Math.random() * 10 + 15}s`;
+          bullet.style.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+          bullet.style.fontSize = `${Math.random() * 0.8 + 1}em`;
+
+          bullet.textContent = texts[Math.floor(Math.random() * texts.length)];
+
+          // 动画结束后自动移除
+          bullet.addEventListener("animationend", () => {
+            bullet.remove();
+          });
+
+          document.body.appendChild(bullet);
+        }, 3000);
+      }
+
+      // 点击特效
+      document.addEventListener("click", (e) => {
+        const spark = document.createElement("div");
+        spark.style.position = "absolute";
+        spark.style.left = e.pageX + "px";
+        spark.style.top = e.pageY + "px";
+        spark.style.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        spark.textContent = "草";
+        document.body.appendChild(spark);
+
+        spark.animate(
+          [
+            { transform: "scale(1)", opacity: 1 },
+            { transform: "scale(3)", opacity: 0 },
+          ],
+          {
+            duration: 1000,
+            iterations: 1,
+          }
+        ).onfinish = () => spark.remove();
+      });
+
+      createBulletChat();
+      const audio = document.getElementById("bgm");
+      const playButton = document.getElementById("playButton");
+      const visualizer = document.getElementById("audioVisualizer");
+
+      // 生成音频波纹
+      function createBars() {
+        for (let i = 0; i < 40; i++) {
+          const bar = document.createElement("div");
+          bar.className = "audio-bar";
+          bar.style.left = i * 5 + "px";
+          bar.style.animationDelay = i * 0.1 + "s";
+          visualizer.appendChild(bar);
+        }
+      }
+
+      // 播放/暂停控制
+      playButton.addEventListener("click", () => {
+        if (audio.paused) {
+          audio.play();
+          playButton.textContent = "■ 音 声 止 ■";
+        } else {
+          audio.pause();
+          playButton.textContent = "♂ 音 声 起 ♂";
+        }
+      });
+
+      // 初始化波纹
+      createBars();
+    </script>
+  </body>
+</html>
